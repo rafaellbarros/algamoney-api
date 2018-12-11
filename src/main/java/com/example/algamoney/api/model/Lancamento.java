@@ -15,7 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-import com.example.algamoney.api.model.enums.TipoLacamento;
+import com.example.algamoney.api.model.enums.TipoLancamento;
 
 import lombok.Data;
 
@@ -44,7 +44,7 @@ public class Lancamento {
 	
 	@NotNull
 	@Enumerated(EnumType.STRING)
-	private TipoLacamento tipo;
+	private TipoLancamento tipo;
 	
 	@NotNull
 	@ManyToOne
