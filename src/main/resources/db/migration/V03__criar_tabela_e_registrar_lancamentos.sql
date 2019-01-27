@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS lancamento;
 CREATE TABLE lancamento (
 	codigo BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
 	descricao VARCHAR(50) NOT NULL,

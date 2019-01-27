@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS usuario;
 CREATE TABLE usuario (
 	codigo BIGINT(20) PRIMARY KEY,
 	nome VARCHAR(50) NOT NULL,
@@ -5,11 +6,13 @@ CREATE TABLE usuario (
 	senha VARCHAR(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS permissao;
 CREATE TABLE permissao (
 	codigo BIGINT(20) PRIMARY KEY,
 	descricao VARCHAR(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS usuario_permissao;
 CREATE TABLE usuario_permissao (
 	codigo_usuario BIGINT(20) NOT NULL,
 	codigo_permissao BIGINT(20) NOT NULL,
