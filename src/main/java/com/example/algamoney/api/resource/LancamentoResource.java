@@ -28,7 +28,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.algamoney.api.event.RecursoCriadoEvent;
 import com.example.algamoney.api.exceptionhandler.AlgamoneyExceptionHandler.Erro;
+import com.example.algamoney.api.model.Dto;
 import com.example.algamoney.api.model.Lancamento;
+import com.example.algamoney.api.model.interfaces.IDto;
 import com.example.algamoney.api.repository.LancamentoRepository;
 import com.example.algamoney.api.repository.filter.LancamentoFilter;
 import com.example.algamoney.api.repository.projections.ResumoLancamento;
@@ -95,6 +97,12 @@ public class LancamentoResource {
 		} catch (IllegalArgumentException e) {
 			return ResponseEntity.notFound().build();
 		}
+	}
+	
+	
+	@GetMapping("/dev/{codigoPessoa}")
+	public List<IDto> buscarDados(@PathVariable Long codigoPessoa) {
+		return this.lancamentoService.buscarDados(codigoPessoa);
 	}
 	
 	@ExceptionHandler({ PessoaInexistenteOuInativaException.class })
