@@ -1,9 +1,6 @@
 package com.example.algamoney.api.security;
 
 
-
-
-
 import java.util.Collection;
 
 import org.springframework.security.core.GrantedAuthority;

@@ -28,12 +28,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.algamoney.api.event.RecursoCriadoEvent;
 import com.example.algamoney.api.exceptionhandler.AlgamoneyExceptionHandler.Erro;
-import com.example.algamoney.api.model.Dto;
 import com.example.algamoney.api.model.Lancamento;
 import com.example.algamoney.api.model.interfaces.IDto;
 import com.example.algamoney.api.repository.LancamentoRepository;
 import com.example.algamoney.api.repository.filter.LancamentoFilter;
-import com.example.algamoney.api.repository.projections.ResumoLancamento;
+import com.example.algamoney.api.repository.projection.ResumoLancamento;
 import com.example.algamoney.api.service.LancamentoService;
 import com.example.algamoney.api.service.exception.PessoaInexistenteOuInativaException;
 

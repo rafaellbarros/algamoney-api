@@ -26,7 +26,7 @@ import org.springframework.security.oauth2.provider.expression.OAuth2MethodSecur
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
 	@Autowired
-	private UserDetailsService  userDetailsService; 
+	private UserDetailsService userDetailsService;
 	
 	@Autowired
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -58,6 +58,5 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	public MethodSecurityExpressionHandler createExpressionHandler() {
 		return new OAuth2MethodSecurityExpressionHandler();
 	}
-	
 	
 }

@@ -23,10 +23,8 @@ public class LancamentoService {
 	private LancamentoRepository lancamentoRepository;
 
 	public Lancamento salvar(Lancamento lancamento) {
-		Pessoa pessoa = pessoaRepository.findOne(lancamento.getPessoa().getCodigo());
-		if (pessoa == null || pessoa.isInativo()) {
-			throw new PessoaInexistenteOuInativaException();
-		}
+		validarPessoa(lancamento);
+
 		return lancamentoRepository.save(lancamento);
 	}
 
@@ -40,19 +38,11 @@ public class LancamentoService {
 
 		return lancamentoRepository.save(lancamentoSalvo);
 	}
-
+	
 	public List<IDto> buscarDados(Long codigoPessoa) {
-	  //List<Dto> buscarDados = lancamentoRepository.buscarDados(codigoPessoa);
-	  List<IDto> buscarDadosDto = this.lancamentoRepository.buscarDadosIDto(codigoPessoa);
-	  return buscarDadosDto;
-	}
-
-	private Lancamento buscarLancamentoExistente(Long codigo) {
-		Lancamento lancamentoSalvo = lancamentoRepository.findOne(codigo);
-		if (lancamentoSalvo == null) {
-			throw new IllegalArgumentException();
-		}
-		return lancamentoSalvo;
+		  //List<Dto> buscarDados = lancamentoRepository.buscarDados(codigoPessoa);
+		  List<IDto> buscarDadosDto = this.lancamentoRepository.buscarDadosIDto(codigoPessoa);
+		  return buscarDadosDto;
 	}
 
 	private void validarPessoa(Lancamento lancamento) {
@@ -64,6 +54,14 @@ public class LancamentoService {
 		if (pessoa == null || pessoa.isInativo()) {
 			throw new PessoaInexistenteOuInativaException();
 		}
+	}
+
+	private Lancamento buscarLancamentoExistente(Long codigo) {
+		Lancamento lancamentoSalvo = lancamentoRepository.findOne(codigo);
+		if (lancamentoSalvo == null) {
+			throw new IllegalArgumentException();
+		}
+		return lancamentoSalvo;
 	}
 
 }
