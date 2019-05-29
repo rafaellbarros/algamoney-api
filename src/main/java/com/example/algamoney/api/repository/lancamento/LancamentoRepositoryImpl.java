@@ -17,8 +17,8 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 
+import com.example.algamoney.api.dto.LancamentoDto;
 import com.example.algamoney.api.model.Categoria_;
-import com.example.algamoney.api.model.Dto;
 import com.example.algamoney.api.model.Lancamento;
 import com.example.algamoney.api.model.Lancamento_;
 import com.example.algamoney.api.model.Pessoa_;
@@ -112,14 +112,14 @@ public class LancamentoRepositoryImpl implements LancamentoRepositoryQuery {
 	}
 
 	@Override
-	public List<Dto> buscarDados(Long codigoPessoa) {
+	public List<LancamentoDto> buscarDados(Long codigoPessoa) {
 		
 		String SQL = "SELECT api.codigo, p.nome, api.descricao, api.data_vencimento FROM ALGAMONEYAPI.lancamento as api\n"
 				+ "INNER JOIN ALGAMONEYAPI.pessoa as p ON api.codigo_pessoa = p.codigo  where api.codigo_pessoa = :codigoPessoa";
 		
 		Query query = manager.createNativeQuery(SQL).setParameter("codigoPessoa", codigoPessoa);
 
-		return NativeQueryResultsMapper.getResultList(query, Dto.class);
+		return NativeQueryResultsMapper.getResultList(query, LancamentoDto.class);
 
 	}
 }

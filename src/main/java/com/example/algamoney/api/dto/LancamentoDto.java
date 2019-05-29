@@ -1,12 +1,11 @@
-package com.example.algamoney.api.model;
+package com.example.algamoney.api.dto;
 
 import java.math.BigInteger;
-import java.time.LocalDate;
 
 import lombok.Data;
 
 @Data
-public class Dto {
+public class LancamentoDto {
 
 	private BigInteger codigo;
 	private String nome;
@@ -14,9 +13,9 @@ public class Dto {
 	private java.sql.Date dataPagamento;
 	// private LocalDate dataPagamento;
 	
-	public Dto() {}
+	public LancamentoDto() {}
 	
-	public Dto(BigInteger codigo, String nome,String descricao, java.sql.Date dataPagamento) {
+	public LancamentoDto(BigInteger codigo, String nome,String descricao, java.sql.Date dataPagamento) {
 		// this.codigo = new Long(codigo.longValue());
 		this.codigo = codigo;
 		this.nome = nome;
