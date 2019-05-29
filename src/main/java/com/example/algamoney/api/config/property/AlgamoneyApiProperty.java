@@ -14,10 +14,21 @@ public class AlgamoneyApiProperty {
 	@Getter
 	private final Seguranca seguranca = new Seguranca();
 	
+	@Getter
+	private final Mail mail = new Mail();
+	
 	public static class Seguranca {
 		
 		@Setter @Getter
 		private boolean enableHttps;
+	}
+	
+	@Setter @Getter
+	public static class Mail {
+		private String host;
+		private Integer port;
+		private String username;
+		private String password;
 	}
 
 }
