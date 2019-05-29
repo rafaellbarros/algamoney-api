@@ -1,5 +1,6 @@
 package com.example.algamoney.api.repository;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,4 +16,8 @@ public interface LancamentoRepository extends JpaRepository<Lancamento, Long>, L
 	@Query(value = "SELECT api.codigo, p.nome, api.descricao, api.data_vencimento FROM ALGAMONEYAPI.lancamento as api\n" + 
 			"INNER JOIN ALGAMONEYAPI.pessoa as p ON api.codigo_pessoa = p.codigo  where api.codigo_pessoa = :codigoPessoa" , nativeQuery = true)
 	List<IDto> buscarDadosIDto(@Param("codigoPessoa") Long codigoPessoa);
+	
+	// data de pagamento menor ou igual e data pagamento é nula
+	List<Lancamento> findByDataVencimentoLessThanEqualAndDataPagamentoIsNull(LocalDate data);
+	
 }
