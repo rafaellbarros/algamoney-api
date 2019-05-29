@@ -16,6 +16,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import com.example.algamoney.api.model.enums.TipoLancamento;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Data;
 
@@ -55,5 +56,10 @@ public class Lancamento {
 	@ManyToOne
 	@JoinColumn(name = "codigo_pessoa")
 	private Pessoa pessoa;
+	
+	@JsonIgnore
+	public boolean isReceita() {
+		return TipoLancamento.RECEITA.equals(this.tipo);
+	}
 
 }
