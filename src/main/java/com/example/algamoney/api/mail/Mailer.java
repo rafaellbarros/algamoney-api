@@ -1,8 +1,10 @@
 package com.example.algamoney.api.mail;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -14,6 +16,8 @@ import org.springframework.stereotype.Component;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
+import com.example.algamoney.api.model.Lancamento;
+import com.example.algamoney.api.model.Usuario;
 import com.example.algamoney.api.repository.LancamentoRepository;
 
 @Component
@@ -46,7 +50,7 @@ public class Mailer {
 				
 		List<Lancamento> lista = repo.findAll();
 		
-		HashMap<String, Object> variaveis = new HashMap<>();
+		Map<String, Object> variaveis = new HashMap<>();
 		variaveis.put("lancamentos", lista);
 		
 		this.enviarEmail("kabulozin@gmail.com", 
@@ -57,6 +61,27 @@ public class Mailer {
 	}
 	
 	*/
+	
+	public void avisarSobreLancamentosVencidos(
+			List<Lancamento> vencidos, List<Usuario> destinatarios) {
+		
+		String template = "mail/aviso-lancamentos-vencidos";
+		
+		Map<String, Object> variaveis = new HashMap<>();
+		variaveis.put("lancamentos", vencidos);
+		
+		List<String> emails = destinatarios.stream()
+			.map(u -> u.getEmail())
+			.collect(Collectors.toList());
+		
+		this.enviarEmail("kabulozin@gmail.com"
+				, emails
+				, "Lançamentos vencidos"
+				, template
+				, variaveis);
+		
+		
+	}
 	
 	public void enviarEmail(String remetente,
 			List<String> destinatarios, String assunto, String template, Map<String, Object> variaveis) {
