@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 import com.example.algamoney.api.model.enums.TipoLancamento;
@@ -58,6 +59,12 @@ public class Lancamento {
 	@ManyToOne
 	@JoinColumn(name = "codigo_pessoa")
 	private Pessoa pessoa;
+	
+	private String anexo;
+	
+	@Transient
+	private String urlAnexo;
+	
 	
 	@JsonIgnore
 	public boolean isReceita() {
