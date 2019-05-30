@@ -17,6 +17,9 @@ public class AlgamoneyApiProperty {
 	@Getter
 	private final Mail mail = new Mail();
 	
+	@Getter
+	private final S3 s3 = new S3();
+	
 	public static class Seguranca {
 		
 		@Setter @Getter
@@ -29,6 +32,12 @@ public class AlgamoneyApiProperty {
 		private Integer port;
 		private String username;
 		private String password;
+	}
+	
+	@Setter @Getter
+	public static class S3 {
+		private String accessKeyId;
+		private String secretAccessKey;
 	}
 
 }
