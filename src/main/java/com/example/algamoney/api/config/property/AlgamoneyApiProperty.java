@@ -38,6 +38,7 @@ public class AlgamoneyApiProperty {
 	public static class S3 {
 		private String accessKeyId;
 		private String secretAccessKey;
+		private String bucket = "aws-algamoney-dev-arquivos";
 	}
 
 }
