@@ -41,7 +41,6 @@ public class Pessoa {
 	@Valid
 	@OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL,
 			orphanRemoval = true)
-	
 	private List<Contato> contatos;
 	
 	@JsonIgnore
